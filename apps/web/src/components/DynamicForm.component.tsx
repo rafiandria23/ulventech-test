@@ -5,6 +5,7 @@ import { FC, memo, useMemo } from 'react';
 import { Stack, TextField, MenuItem } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
 import { isString } from 'tipe-apa';
+import validator from 'validator';
 
 import {
   DynamicFormPayload,
@@ -28,9 +29,16 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
           disabled={loading}
           name={formField.fieldName}
           rules={{
-            required: {
-              value: true,
-              message: `${_.startCase(formField.fieldName)} cannot be empty!`,
+            required: `${_.startCase(formField.fieldName)} cannot be empty!`,
+            validate: (value) => {
+              if (
+                formField.type === 'email' &&
+                !validator.isEmail(value as string)
+              ) {
+                return `${_.startCase(formField.fieldName)} is invalid!`;
+              }
+
+              return true;
             },
           }}
           render={({ field, fieldState }) => {

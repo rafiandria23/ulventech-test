@@ -27,7 +27,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "tipe-apa": "^0.4.7",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
@@ -51,6 +52,7 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.54",
     "@types/react-dom": "^18.2.18",
+    "@types/validator": "^13.11.9",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "babel-jest": "^29.4.1",
