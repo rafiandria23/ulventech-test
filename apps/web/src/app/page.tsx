@@ -1,8 +1,11 @@
 'use client';
 
+import _ from 'lodash';
 import { FC, useCallback, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Container } from '@mui/material';
+import { Stack, Container } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Send as SendIcon } from '@mui/icons-material';
 
 import { DynamicFormPayload } from '../types/dynamic-form.type';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hook';
@@ -17,6 +20,10 @@ const HomePage: FC = () => {
     mode: 'onBlur',
   });
 
+  const handleFetchFields = useCallback(async () => {
+    await dispatch(fetchFields()).unwrap();
+  }, [dispatch]);
+
   const handleSubmitFields = useCallback<
     (payload: DynamicFormPayload) => Promise<void>
   >(
@@ -27,17 +34,42 @@ const HomePage: FC = () => {
   );
 
   useEffect(() => {
-    if (!fields.length) {
-      dispatch(fetchFields());
+    handleFetchFields();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (fields.length) {
+      form.reset(_.chain(fields).keyBy('fieldName').mapValues('value').value());
     }
-  }, [fields, dispatch]);
+  }, [fields, form]);
 
   return (
     <FormProvider {...form}>
       <Layout>
-        <Container>
-          {fields.length && <DynamicForm loading={loading} fields={fields} />}
-        </Container>
+        <form
+          name='dynamic-form'
+          onSubmit={form.handleSubmit(handleSubmitFields)}
+        >
+          <Stack component={Container} spacing={8}>
+            {fields.length && (
+              <>
+                <DynamicForm loading={loading} fields={fields} />
+
+                <LoadingButton
+                  type='submit'
+                  variant='contained'
+                  size='large'
+                  loading={loading}
+                  endIcon={<SendIcon />}
+                >
+                  Submit
+                </LoadingButton>
+              </>
+            )}
+          </Stack>
+        </form>
       </Layout>
     </FormProvider>
   );

@@ -8,7 +8,8 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.7",
+    "@mui/icons-material": "^5.15.9",
+    "@mui/lab": "^5.0.0-alpha.165",
     "@mui/material": "^5.15.7",
     "@mui/material-nextjs": "^5.15.9",
     "@nestjs/common": "^10.0.2",
@@ -24,6 +25,7 @@
     "react-redux": "^9.1.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
+    "tipe-apa": "^0.4.7",
     "tslib": "^2.6.2"
   },
   "devDependencies": {

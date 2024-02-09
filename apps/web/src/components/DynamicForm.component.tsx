@@ -1,8 +1,10 @@
 'use client';
 
+import _ from 'lodash';
 import { FC, memo, useMemo } from 'react';
-import { TextField, MenuItem } from '@mui/material';
+import { Stack, TextField, MenuItem } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
+import { isString } from 'tipe-apa';
 
 import {
   DynamicFormPayload,
@@ -28,16 +30,17 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
           rules={{
             required: {
               value: true,
-              message: 'Cannot be empty!',
+              message: `${_.startCase(formField.fieldName)} cannot be empty!`,
             },
           }}
           render={({ field }) => {
             return (
               <TextField
+                disabled={field.disabled}
                 type={formField.type}
                 name={field.name}
-                label={field.name}
-                placeholder={field.name}
+                label={_.startCase(field.name)}
+                placeholder={_.startCase(field.name)}
                 defaultValue={formField.value}
                 multiline={formField.type === 'multiline'}
                 rows={5}
@@ -46,11 +49,8 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
                 onBlur={field.onBlur}
               >
                 {formField.options?.map((option) => (
-                  <MenuItem
-                    key={`${formField.fieldName}-${option}`}
-                    value={option}
-                  >
-                    {option}
+                  <MenuItem key={`${field.name}-${option}`} value={option}>
+                    {isString(option) ? _.startCase(option) : option}
                   </MenuItem>
                 ))}
               </TextField>
@@ -61,7 +61,7 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
     });
   }, [loading, fields, control]);
 
-  return <>{formFields}</>;
+  return <Stack spacing={4}>{formFields}</Stack>;
 };
 
 export default memo(DynamicForm);
