@@ -22,8 +22,10 @@ class ApiClient {
     return result;
   }
 
-  public async submitFields(payload: DynamicFormPayload): Promise<void> {
-    await this.client.post('/', payload);
+  public async submitFields(payload: DynamicFormPayload): Promise<string> {
+    const { data } = await this.client.post('/', payload);
+
+    return data.message;
   }
 }
 

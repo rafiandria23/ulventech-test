@@ -6,15 +6,16 @@ import { useTheme, Stack } from '@mui/material';
 import Header from '../components/Header.component';
 
 export interface ILayoutProps {
+  loading?: boolean;
   children: ReactNode;
 }
 
-const Layout: FC<ILayoutProps> = ({ children }) => {
+const Layout: FC<ILayoutProps> = ({ loading, children }) => {
   const theme = useTheme();
 
   return (
     <>
-      <Header />
+      <Header loading={loading} />
 
       <Stack
         component='main'

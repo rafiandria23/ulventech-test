@@ -13,6 +13,12 @@ const ReduxProvider = dynamic(
     ssr: false,
   },
 );
+const NotistackProvicer = dynamic(
+  () => import('../components/NotistackProvider.component'),
+  {
+    ssr: false,
+  },
+);
 
 export interface IRootLayoutProps {
   children: ReactNode;
@@ -27,7 +33,7 @@ const RootLayout: FC<IRootLayoutProps> = ({ children }) => {
             <ThemeProvider theme={theme}>
               <CssBaseline />
 
-              {children}
+              <NotistackProvicer>{children}</NotistackProvicer>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </ReduxProvider>

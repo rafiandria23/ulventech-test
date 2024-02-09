@@ -5,7 +5,7 @@ import { FC, useCallback, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Stack, Container } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import { Send as SendIcon } from '@mui/icons-material';
+import { useSnackbar } from 'notistack';
 
 import { DynamicFormPayload } from '../types/dynamic-form.type';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.hook';
@@ -19,18 +19,38 @@ const HomePage: FC = () => {
   const form = useForm<DynamicFormPayload>({
     mode: 'onBlur',
   });
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleFetchFields = useCallback(async () => {
-    await dispatch(fetchFields()).unwrap();
-  }, [dispatch]);
+    try {
+      await dispatch(fetchFields()).unwrap();
+    } catch (err) {
+      enqueueSnackbar({
+        variant: 'error',
+        message: (err as Error).message,
+      });
+    }
+  }, [dispatch, enqueueSnackbar]);
 
   const handleSubmitFields = useCallback<
     (payload: DynamicFormPayload) => Promise<void>
   >(
     async (payload) => {
-      await dispatch(submitFields(payload)).unwrap();
+      try {
+        const message = await dispatch(submitFields(payload)).unwrap();
+
+        enqueueSnackbar({
+          variant: 'success',
+          message,
+        });
+      } catch (err) {
+        enqueueSnackbar({
+          variant: 'error',
+          message: (err as Error).message,
+        });
+      }
     },
-    [dispatch],
+    [dispatch, enqueueSnackbar],
   );
 
   useEffect(() => {
@@ -47,13 +67,13 @@ const HomePage: FC = () => {
 
   return (
     <FormProvider {...form}>
-      <Layout>
+      <Layout loading={loading && !fields.length}>
         <form
           name='dynamic-form'
           onSubmit={form.handleSubmit(handleSubmitFields)}
         >
           <Stack component={Container} spacing={8}>
-            {fields.length && (
+            {!!fields.length && (
               <>
                 <DynamicForm loading={loading} fields={fields} />
 
@@ -62,7 +82,6 @@ const HomePage: FC = () => {
                   variant='contained'
                   size='large'
                   loading={loading}
-                  endIcon={<SendIcon />}
                 >
                   Submit
                 </LoadingButton>

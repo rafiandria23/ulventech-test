@@ -20,9 +20,9 @@ export const fetchFields = createAsyncThunk<
 });
 
 export const submitFields = createAsyncThunk<
-  void,
+  string,
   DynamicFormPayload,
   { state: IRootState }
 >('dynamicForm/submitFields', async (payload) => {
-  await apiClient.submitFields(payload);
+  return await apiClient.submitFields(payload);
 });
