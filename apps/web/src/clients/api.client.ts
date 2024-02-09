@@ -9,8 +9,12 @@ class ApiClient {
   private readonly client: AxiosInstance;
 
   constructor() {
+    if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
+      throw new Error('NEXT_PUBLIC_API_BASE_URL env has to be set!');
+    }
+
     this.client = axios.create({
-      baseURL: 'https://ulventech-react-exam.netlify.app/api/form',
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
     });
   }
 
