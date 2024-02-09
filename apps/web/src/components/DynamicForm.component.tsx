@@ -33,7 +33,7 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
               message: `${_.startCase(formField.fieldName)} cannot be empty!`,
             },
           }}
-          render={({ field }) => {
+          render={({ field, fieldState }) => {
             return (
               <TextField
                 disabled={field.disabled}
@@ -47,6 +47,8 @@ const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
                 select={formField.type === 'select'}
                 onChange={field.onChange}
                 onBlur={field.onBlur}
+                error={!!fieldState.error || fieldState.invalid}
+                helperText={fieldState.error?.message}
               >
                 {formField.options?.map((option) => (
                   <MenuItem key={`${field.name}-${option}`} value={option}>
