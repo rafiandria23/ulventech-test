@@ -22,6 +22,11 @@ async function bootstrap() {
     .setTitle('Ulventech Test API')
     .setDescription('Test for Ulventech.')
     .setVersion('1.0')
+    .addTag('Auth')
+    .addTag('Admin')
+    .addTag('User')
+    .addBearerAuth({ type: 'http', name: 'Admin' })
+    .addBearerAuth({ type: 'http', name: 'User' })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/docs', app, document);

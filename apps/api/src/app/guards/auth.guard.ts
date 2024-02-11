@@ -94,7 +94,7 @@ export class AuthGuard implements CanActivate {
 
       return payload;
     } catch (err) {
-      throw new UnauthorizedException(err.message);
+      throw new UnauthorizedException('You are not authorized!');
     }
   }
 
@@ -106,7 +106,7 @@ export class AuthGuard implements CanActivate {
 
       return payload;
     } catch (err) {
-      throw new UnauthorizedException(err.message);
+      throw new UnauthorizedException('You are not authorized!');
     }
   }
 }
