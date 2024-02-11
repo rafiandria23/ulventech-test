@@ -29,32 +29,32 @@ export class User extends Model<User> {
     primaryKey: true,
     defaultValue: UUIDV4,
   })
-  id: string;
+  public id: string;
 
   @Column
-  first_name: string;
+  public first_name: string;
 
   @AllowNull
   @Column
-  last_name: string | null;
+  public last_name: string | null;
 
   @Unique
   @Column
-  email: string;
+  public email: string;
 
   @CreatedAt
   @Column
-  created_at: Date;
+  public created_at: Date;
 
   @UpdatedAt
   @Column
-  updated_at: Date;
+  public updated_at: Date;
 
   @AllowNull
   @DeletedAt
   @Column
-  deleted_at: Date | null;
+  public deleted_at: Date | null;
 
   @HasOne(() => UserPassword, 'user_id')
-  password: UserPassword;
+  public password: UserPassword;
 }

@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     private jwtService: JwtService,
   ) {}
 
-  async canActivate(ctx: ExecutionContext): Promise<boolean> {
+  public async canActivate(ctx: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(
       AuthMetadata.PUBLIC,
       [ctx.getHandler(), ctx.getClass()],
@@ -65,7 +65,7 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 
-  extractAccessToken(ctx: ExecutionContext) {
+  private extractAccessToken(ctx: ExecutionContext) {
     const request = ctx
       .switchToHttp()
       .getRequest<UserAuthRequest | AdminAuthRequest>();
@@ -86,7 +86,7 @@ export class AuthGuard implements CanActivate {
     return accessToken;
   }
 
-  async authenticateAdmin(accessToken: string) {
+  private async authenticateAdmin(accessToken: string) {
     try {
       const payload = await this.jwtService.verifyAsync(accessToken, {
         secret: this.configService.get<string>('jwt.admin_secret'),
@@ -98,7 +98,7 @@ export class AuthGuard implements CanActivate {
     }
   }
 
-  async authenticateUser(accessToken: string) {
+  private async authenticateUser(accessToken: string) {
     try {
       const payload = await this.jwtService.verifyAsync(accessToken, {
         secret: this.configService.get<string>('jwt.user_secret'),

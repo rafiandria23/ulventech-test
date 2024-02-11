@@ -8,11 +8,11 @@ import { CreateUserDto } from './dtos/create-user.dto';
 export class UserService {
   constructor(@InjectModel(User) private readonly userModel: typeof User) {}
 
-  readById(id: string) {
+  public readById(id: string) {
     return this.userModel.findByPk(id);
   }
 
-  readByEmail(email: string) {
+  public readByEmail(email: string) {
     return this.userModel.findOne({
       where: {
         email,
@@ -20,7 +20,7 @@ export class UserService {
     });
   }
 
-  async create(payload: CreateUserDto) {
+  public async create(payload: CreateUserDto) {
     try {
       const createdUser = await this.userModel.create({
         first_name: payload.first_name,

@@ -8,11 +8,11 @@ import { CreateAdminDto } from './dtos/create-admin.dto';
 export class AdminService {
   constructor(@InjectModel(Admin) private readonly adminModel: typeof Admin) {}
 
-  readById(id: string) {
+  public readById(id: string) {
     return this.adminModel.findByPk(id);
   }
 
-  readByEmail(email: string) {
+  public readByEmail(email: string) {
     return this.adminModel.findOne({
       where: {
         email,
@@ -20,7 +20,7 @@ export class AdminService {
     });
   }
 
-  async create(payload: CreateAdminDto) {
+  public async create(payload: CreateAdminDto) {
     try {
       const createdAdmin = await this.adminModel.create({
         first_name: payload.first_name,

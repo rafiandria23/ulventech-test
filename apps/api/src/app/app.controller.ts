@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/')
-  helloWorld() {
+  public helloWorld() {
     return this.appService.successTimestamp({
       data: {
         message: 'Hello, world!',

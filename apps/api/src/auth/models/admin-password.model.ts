@@ -32,39 +32,39 @@ export class AdminPassword extends Model<AdminPassword> {
     primaryKey: true,
     defaultValue: UUIDV4,
   })
-  id: string;
+  public id: string;
 
   @ForeignKey(() => Admin)
   @Column({
     type: DataType.UUID,
     onDelete: 'CASCADE',
   })
-  admin_id: string;
+  public admin_id: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  password: string;
+  public password: string;
 
   @CreatedAt
   @Column
-  created_at: Date;
+  public created_at: Date;
 
   @UpdatedAt
   @Column
-  updated_at: Date;
+  public updated_at: Date;
 
   @AllowNull
   @DeletedAt
   @Column
-  deleted_at: Date | null;
+  public deleted_at: Date | null;
 
   @BelongsTo(() => Admin, 'admin_id')
-  admin: Admin;
+  public admin: Admin;
 
   @BeforeCreate
   @BeforeUpdate
-  static async hashPassword(adminPassword: AdminPassword) {
+  public static async hashPassword(adminPassword: AdminPassword) {
     adminPassword.password = await bcrypt.hash(adminPassword.password, 10);
   }
 }

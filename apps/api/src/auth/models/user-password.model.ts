@@ -32,39 +32,39 @@ export class UserPassword extends Model<UserPassword> {
     primaryKey: true,
     defaultValue: UUIDV4,
   })
-  id: string;
+  public id: string;
 
   @ForeignKey(() => User)
   @Column({
     type: DataType.UUID,
     onDelete: 'CASCADE',
   })
-  user_id: string;
+  public user_id: string;
 
   @Column({
     type: DataType.TEXT,
   })
-  password: string;
+  public password: string;
 
   @CreatedAt
   @Column
-  created_at: Date;
+  public created_at: Date;
 
   @UpdatedAt
   @Column
-  updated_at: Date;
+  public updated_at: Date;
 
   @AllowNull
   @DeletedAt
   @Column
-  deleted_at: Date | null;
+  public deleted_at: Date | null;
 
   @BelongsTo(() => User, 'user_id')
-  user: User;
+  public user: User;
 
   @BeforeCreate
   @BeforeUpdate
-  static async hashPassword(userPassword: UserPassword) {
+  public static async hashPassword(userPassword: UserPassword) {
     userPassword.password = await bcrypt.hash(userPassword.password, 10);
   }
 }
