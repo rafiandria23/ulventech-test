@@ -42,23 +42,6 @@ export class User extends Model<User> {
   @Column
   email: string;
 
-  @AllowNull
-  @Unique
-  @Column
-  phone: string | null;
-
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: false,
-  })
-  is_email_verified: boolean;
-
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: false,
-  })
-  is_phone_verified: boolean;
-
   @CreatedAt
   @Column
   created_at: Date;
