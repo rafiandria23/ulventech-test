@@ -1,11 +1,13 @@
 import path from 'path';
-import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { APP_PIPE, APP_GUARD, APP_FILTER } from '@nestjs/core';
 import { Module, ValidationPipe, BadRequestException } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { JwtModule } from '@nestjs/jwt';
 
 import apiConfig from './configs/api.config';
 import dbConfig from './configs/db.config';
+import { AuthGuard } from './guards/auth.guard';
 import { ExceptionFilter } from './filters/exception.filter';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -38,6 +40,9 @@ import { UserModule } from '../user/user.module';
         };
       },
     }),
+    JwtModule.register({
+      global: true,
+    }),
     AuthModule,
     AdminModule,
     UserModule,
@@ -58,6 +63,10 @@ import { UserModule } from '../user/user.module';
           },
         });
       },
+    },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
     },
     {
       provide: APP_FILTER,
