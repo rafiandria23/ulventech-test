@@ -5,6 +5,7 @@ import {
   ApiResponse,
   getSchemaPath,
 } from '@nestjs/swagger';
+import dayjs from 'dayjs';
 
 import { SuccessTimestampDto } from '../app/dtos/success-timestamp.dto';
 import { Public } from '../app/decorators/auth.decorator';
@@ -59,16 +60,55 @@ export class AuthController {
         {
           properties: {
             data: {
-              type: 'object',
-              properties: {
-                message: {
-                  type: 'string',
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  property: {
+                    type: 'string',
+                  },
+                  constraints: {
+                    type: 'object',
+                  },
                 },
+                required: ['property', 'constraints'],
               },
-              required: ['message'],
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: [
+              {
+                property: 'first_name',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'first_name should not be empty',
+                  isString: 'first_name must be a string',
+                },
+              },
+              {
+                property: 'email',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'email should not be empty',
+                  isString: 'email must be a string',
+                  isEmail: 'email must be an email',
+                },
+              },
+              {
+                property: 'password',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'password should not be empty',
+                  isString: 'password must be a string',
+                  minLength:
+                    'password must be longer than or equal to 6 characters',
+                },
+              },
+            ],
+          },
         },
       ],
     },
@@ -94,6 +134,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'Admin already exists!',
+            },
+          },
         },
       ],
     },
@@ -149,16 +196,47 @@ export class AuthController {
         {
           properties: {
             data: {
-              type: 'object',
-              properties: {
-                message: {
-                  type: 'string',
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  property: {
+                    type: 'string',
+                  },
+                  constraints: {
+                    type: 'object',
+                  },
                 },
+                required: ['property', 'constraints'],
               },
-              required: ['message'],
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: [
+              {
+                property: 'email',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'email should not be empty',
+                  isString: 'email must be a string',
+                  isEmail: 'email must be an email',
+                },
+              },
+              {
+                property: 'password',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'password should not be empty',
+                  isString: 'password must be a string',
+                  minLength:
+                    'password must be longer than or equal to 6 characters',
+                },
+              },
+            ],
+          },
         },
       ],
     },
@@ -184,6 +262,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'Admin is not found!',
+            },
+          },
         },
       ],
     },
@@ -209,6 +294,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'Please reset your password!',
+            },
+          },
         },
       ],
     },
@@ -264,16 +356,55 @@ export class AuthController {
         {
           properties: {
             data: {
-              type: 'object',
-              properties: {
-                message: {
-                  type: 'string',
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  property: {
+                    type: 'string',
+                  },
+                  constraints: {
+                    type: 'object',
+                  },
                 },
+                required: ['property', 'constraints'],
               },
-              required: ['message'],
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: [
+              {
+                property: 'first_name',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'first_name should not be empty',
+                  isString: 'first_name must be a string',
+                },
+              },
+              {
+                property: 'email',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'email should not be empty',
+                  isString: 'email must be a string',
+                  isEmail: 'email must be an email',
+                },
+              },
+              {
+                property: 'password',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'password should not be empty',
+                  isString: 'password must be a string',
+                  minLength:
+                    'password must be longer than or equal to 6 characters',
+                },
+              },
+            ],
+          },
         },
       ],
     },
@@ -299,6 +430,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'User already exists!',
+            },
+          },
         },
       ],
     },
@@ -354,16 +492,47 @@ export class AuthController {
         {
           properties: {
             data: {
-              type: 'object',
-              properties: {
-                message: {
-                  type: 'string',
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  property: {
+                    type: 'string',
+                  },
+                  constraints: {
+                    type: 'object',
+                  },
                 },
+                required: ['property', 'constraints'],
               },
-              required: ['message'],
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: [
+              {
+                property: 'email',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'email should not be empty',
+                  isString: 'email must be a string',
+                  isEmail: 'email must be an email',
+                },
+              },
+              {
+                property: 'password',
+                children: [],
+                constraints: {
+                  isNotEmpty: 'password should not be empty',
+                  isString: 'password must be a string',
+                  minLength:
+                    'password must be longer than or equal to 6 characters',
+                },
+              },
+            ],
+          },
         },
       ],
     },
@@ -389,6 +558,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'User is not found!',
+            },
+          },
         },
       ],
     },
@@ -414,6 +590,13 @@ export class AuthController {
             },
           },
           required: ['data'],
+          example: {
+            success: false,
+            timestamp: dayjs(),
+            data: {
+              message: 'Please reset your password!',
+            },
+          },
         },
       ],
     },
