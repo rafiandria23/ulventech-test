@@ -13,7 +13,7 @@ import {
   BeforeCreate,
   BeforeUpdate,
 } from 'sequelize-typescript';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { User } from '../../user/models/user.model';
 

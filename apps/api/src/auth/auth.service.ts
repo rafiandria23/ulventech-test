@@ -7,7 +7,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/sequelize';
 import { JwtService } from '@nestjs/jwt';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { AdminPassword } from './models/admin-password.model';
 import { UserPassword } from './models/user-password.model';

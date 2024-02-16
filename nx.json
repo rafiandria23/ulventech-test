@@ -4,9 +4,6 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
-      "!{projectRoot}/cypress/**/*",
-      "!{projectRoot}/**/*.cy.[jt]s?(x)",
-      "!{projectRoot}/cypress.config.[jt]s",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.js",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -24,13 +21,6 @@
         "buildTargetName": "build",
         "devTargetName": "dev",
         "startTargetName": "start"
-      }
-    },
-    {
-      "plugin": "@nx/cypress/plugin",
-      "options": {
-        "targetName": "e2e",
-        "componentTestingTargetName": "component-test"
       }
     },
     {
