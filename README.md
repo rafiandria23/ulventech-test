@@ -33,7 +33,7 @@ Test for Ulventech.
 
 ## Environment
 
-Environment variables are available in `.env.template` file inside each app.
+Environment variables are available in `.env.example` file inside each app.
 
 ## Installation
 
