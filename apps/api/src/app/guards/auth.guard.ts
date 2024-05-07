@@ -18,9 +18,9 @@ import { AuthMetadata } from '../constants/auth.constant';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
-    private reflector: Reflector,
-    private configService: ConfigService,
-    private jwtService: JwtService,
+    private readonly reflector: Reflector,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService,
   ) {}
 
   public async canActivate(ctx: ExecutionContext): Promise<boolean> {
