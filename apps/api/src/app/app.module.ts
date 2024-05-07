@@ -28,8 +28,8 @@ import { UserModule } from '../user/user.module';
         return {
           dialect: 'sqlite',
           host: configService.get<string>('db.host'),
-          user: configService.get<string>('db.user'),
-          pass: configService.get<string>('db.pass'),
+          username: configService.get<string>('db.user'),
+          password: configService.get<string>('db.pass'),
           storage: path.join(
             __dirname,
             '..',
