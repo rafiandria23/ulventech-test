@@ -29,7 +29,7 @@ export class AuthService {
     private readonly userService: UserService,
   ) {}
 
-  private async _signAccessToken(payload: object, secret: string) {
+  private async signAccessToken(payload: object, secret: string) {
     try {
       const accessToken = await this.jwtService.signAsync(payload, {
         secret,
@@ -55,7 +55,7 @@ export class AuthService {
     });
 
     const [accessToken] = await Promise.all([
-      this._signAccessToken(
+      this.signAccessToken(
         { admin_id: createdAdmin.id },
         this.configService.get<string>('jwt.admin_secret'),
       ),
@@ -91,7 +91,7 @@ export class AuthService {
       throw new BadRequestException('Wrong email or password!');
     }
 
-    const accessToken = await this._signAccessToken(
+    const accessToken = await this.signAccessToken(
       { admin_id: existingAdmin.id },
       this.configService.get<string>('jwt.admin_secret'),
     );
@@ -113,7 +113,7 @@ export class AuthService {
     });
 
     const [accessToken] = await Promise.all([
-      this._signAccessToken(
+      this.signAccessToken(
         { user_id: createdUser.id },
         this.configService.get<string>('jwt.user_secret'),
       ),
@@ -149,7 +149,7 @@ export class AuthService {
       throw new BadRequestException('Wrong email or password!');
     }
 
-    const accessToken = await this._signAccessToken(
+    const accessToken = await this.signAccessToken(
       { user_id: existingUser.id },
       this.configService.get<string>('jwt.user_secret'),
     );
