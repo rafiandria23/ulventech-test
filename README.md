@@ -54,7 +54,7 @@ nx run-many -t serve start
 
 ## API Docs
 
-API docs is available at `/docs`. For example `http://127.0.0.1:4000/docs`.
+Available at `/`.
 
 ## License
 
