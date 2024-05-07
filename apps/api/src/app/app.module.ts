@@ -27,7 +27,6 @@ import { UserModule } from '../user/user.module';
       async useFactory(configService: ConfigService) {
         return {
           dialect: 'sqlite',
-          host: configService.get<string>('db.host'),
           username: configService.get<string>('db.user'),
           password: configService.get<string>('db.pass'),
           storage: path.join(
