@@ -12,10 +12,15 @@ import { AppModule } from './app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(),
+    new FastifyAdapter({
+      logger: true,
+    }),
   );
 
   const configService = app.get(ConfigService);
+
+  const globalPrefix = '/api/v1';
+  app.setGlobalPrefix(globalPrefix);
 
   // OpenAPI (Swagger)
   const config = new DocumentBuilder()
@@ -29,7 +34,7 @@ async function bootstrap() {
     .addBearerAuth({ type: 'http', name: 'User' })
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/docs', app, document);
+  SwaggerModule.setup('/', app, document);
 
   const apiHost = configService.get<string>('api.host');
   const apiPort = configService.get<number>('api.port');

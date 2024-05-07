@@ -15,7 +15,7 @@ import { AppService } from '../app/app.service';
 
 @ApiExtraModels(SuccessTimestampDto)
 @ApiBearerAuth('Admin')
-@Controller('/api/v1/admins')
+@Controller('/admins')
 export class AdminController {
   constructor(private readonly appService: AppService) {}
 
