@@ -15,7 +15,7 @@ import { AdminSignInDto, UserSignInDto } from './dtos/sign-in.dto';
 import { AuthService } from './auth.service';
 
 @ApiExtraModels(SuccessTimestampDto)
-@Controller('/api/v1/auth')
+@Controller('/auth')
 export class AuthController {
   constructor(
     private readonly appService: AppService,

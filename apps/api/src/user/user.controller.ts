@@ -15,7 +15,7 @@ import { AppService } from '../app/app.service';
 
 @ApiExtraModels(SuccessTimestampDto)
 @ApiBearerAuth('User')
-@Controller('/api/v1/users')
+@Controller('/users')
 export class UserController {
   constructor(private readonly appService: AppService) {}
 
