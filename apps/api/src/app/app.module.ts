@@ -42,6 +42,9 @@ import { UserModule } from '../user/user.module';
     }),
     JwtModule.register({
       global: true,
+      signOptions: {
+        issuer: 'Ulventech',
+      },
     }),
     AuthModule,
     AdminModule,
