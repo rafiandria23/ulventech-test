@@ -1,9 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
-import {
-  IDynamicFormField,
-  DynamicFormPayload,
-} from '../types/dynamic-form.type';
+import type { DynamicFormPayload } from '../types/dynamic-form';
+import type { DynamicFormField } from '../interfaces/dynamic-form';
 
 class ApiClient {
   private readonly client: AxiosInstance;
@@ -18,10 +16,10 @@ class ApiClient {
     });
   }
 
-  public async fetchFields(): Promise<IDynamicFormField[]> {
+  public async fetchFields(): Promise<DynamicFormField[]> {
     const {
       data: { data: result },
-    } = await this.client.get<{ data: IDynamicFormField[] }>('/');
+    } = await this.client.get<{ data: DynamicFormField[] }>('/');
 
     return result;
   }

@@ -1,9 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-import { IDynamicFormState } from '../../types/dynamic-form.type';
-import { fetchFields, submitFields } from '../thunks/dynamic-form.thunk';
+import { DynamicFormState } from '../../interfaces/dynamic-form';
+import { fetchFields, submitFields } from '../thunks/dynamic-form';
 
-const initialState: IDynamicFormState = {
+const initialState: DynamicFormState = {
   loading: false,
   fields: [],
 };

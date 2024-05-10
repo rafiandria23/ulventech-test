@@ -1,17 +1,18 @@
 'use client';
 
 import _ from 'lodash';
-import { FC, useCallback, useEffect } from 'react';
+import type { FC } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Stack, Container } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { useSnackbar } from 'notistack';
 
-import { DynamicFormPayload } from '../types/dynamic-form.type';
-import { useAppDispatch, useAppSelector } from '../hooks/redux.hook';
-import { fetchFields, submitFields } from '../redux/thunks/dynamic-form.thunk';
-import Layout from '../components/Layout.component';
-import DynamicForm from '../components/DynamicForm.component';
+import type { DynamicFormPayload } from '../types/dynamic-form';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { fetchFields, submitFields } from '../redux/thunks/dynamic-form';
+import Layout from '../components/Layout';
+import DynamicForm from '../components/DynamicForm';
 
 const HomePage: FC = () => {
   const dispatch = useAppDispatch();

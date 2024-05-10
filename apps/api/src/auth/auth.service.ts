@@ -11,8 +11,12 @@ import bcrypt from 'bcrypt';
 
 import { AdminPassword } from './models/admin-password.model';
 import { UserPassword } from './models/user-password.model';
-import { AdminSignUpDto, UserSignUpDto } from './dtos/sign-up.dto';
-import { AdminSignInDto, UserSignInDto } from './dtos/sign-in.dto';
+import {
+  AdminSignUpDto,
+  AdminSignInDto,
+  UserSignUpDto,
+  UserSignInDto,
+} from './dtos/sign.dto';
 import { AdminService } from '../admin/admin.service';
 import { UserService } from '../user/user.service';
 

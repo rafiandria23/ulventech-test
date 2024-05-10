@@ -7,11 +7,11 @@ import { Provider } from 'react-redux';
 // Redux
 import store from '../redux';
 
-export interface IReduxProviderProps {
+export interface ReduxProviderProps {
   children: ReactNode;
 }
 
-const ReduxProvider: FC<IReduxProviderProps> = ({ children }) => {
+const ReduxProvider: FC<ReduxProviderProps> = ({ children }) => {
   return <Provider store={store}>{children}</Provider>;
 };
 

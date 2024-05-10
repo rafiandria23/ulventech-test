@@ -1,13 +1,14 @@
 'use client';
 
-import { FC, ReactNode, memo } from 'react';
+import type { FC } from 'react';
+import { ReactNode, memo } from 'react';
 import { SnackbarProvider } from 'notistack';
 
-export interface INotistackProviderProps {
+export interface NotistackProviderProps {
   children: ReactNode;
 }
 
-const NotistackProvider: FC<INotistackProviderProps> = ({ children }) => {
+const NotistackProvider: FC<NotistackProviderProps> = ({ children }) => {
   return <SnackbarProvider>{children}</SnackbarProvider>;
 };
 

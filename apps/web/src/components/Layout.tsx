@@ -1,16 +1,17 @@
 'use client';
 
-import { FC, ReactNode, memo } from 'react';
+import type { FC } from 'react';
+import { ReactNode, memo } from 'react';
 import { useTheme, Stack } from '@mui/material';
 
-import Header from '../components/Header.component';
+import Header from './Header';
 
-export interface ILayoutProps {
+export interface LayoutProps {
   loading?: boolean;
   children: ReactNode;
 }
 
-const Layout: FC<ILayoutProps> = ({ loading, children }) => {
+const Layout: FC<LayoutProps> = ({ loading, children }) => {
   const theme = useTheme();
 
   return (
