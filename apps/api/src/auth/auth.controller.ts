@@ -10,8 +10,12 @@ import dayjs from 'dayjs';
 import { SuccessTimestampDto } from '../app/dtos/success-timestamp.dto';
 import { Public } from '../app/decorators/auth.decorator';
 import { AppService } from '../app/app.service';
-import { AdminSignUpDto, UserSignUpDto } from './dtos/sign-up.dto';
-import { AdminSignInDto, UserSignInDto } from './dtos/sign-in.dto';
+import {
+  AdminSignUpDto,
+  AdminSignInDto,
+  UserSignUpDto,
+  UserSignInDto,
+} from './dtos/sign.dto';
 import { AuthService } from './auth.service';
 
 @ApiExtraModels(SuccessTimestampDto)

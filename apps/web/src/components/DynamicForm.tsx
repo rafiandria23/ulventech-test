@@ -1,23 +1,22 @@
 'use client';
 
 import _ from 'lodash';
-import { FC, memo, useMemo } from 'react';
+import type { FC } from 'react';
+import { memo, useMemo } from 'react';
 import { Stack, TextField, MenuItem } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
 import { isString } from 'tipe-apa';
 import validator from 'validator';
 
-import {
-  DynamicFormPayload,
-  IDynamicFormField,
-} from '../types/dynamic-form.type';
+import type { DynamicFormPayload } from '../types/dynamic-form';
+import type { DynamicFormField } from '../interfaces/dynamic-form';
 
-export interface IDynamicFormProps {
+export interface DynamicFormProps {
   loading: boolean;
-  fields: IDynamicFormField[];
+  fields: DynamicFormField[];
 }
 
-const DynamicForm: FC<IDynamicFormProps> = ({ loading, fields }) => {
+const DynamicForm: FC<DynamicFormProps> = ({ loading, fields }) => {
   const { control } = useFormContext<DynamicFormPayload>();
 
   const formFields = useMemo(() => {

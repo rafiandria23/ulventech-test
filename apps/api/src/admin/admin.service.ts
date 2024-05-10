@@ -2,7 +2,7 @@ import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 import { Admin } from './models/admin.model';
-import { CreateAdminDto } from './dtos/create-admin.dto';
+import { CreateAdminDto } from './dtos/create.dto';
 
 @Injectable()
 export class AdminService {

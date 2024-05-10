@@ -2,7 +2,7 @@ import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 import { User } from './models/user.model';
-import { CreateUserDto } from './dtos/create-user.dto';
+import { CreateUserDto } from './dtos/create.dto';
 
 @Injectable()
 export class UserService {

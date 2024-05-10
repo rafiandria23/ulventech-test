@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { IRootState } from '../types/redux.type';
-import dynamicFromSlice from './slices/dynamic-form.slice';
+import type { RootState } from '../interfaces/redux';
+import dynamicFromSlice from './slices/dynamic-form';
 
-const store = configureStore<IRootState>({
+const store = configureStore<RootState>({
   reducer: {
     dynamicForm: dynamicFromSlice,
   },

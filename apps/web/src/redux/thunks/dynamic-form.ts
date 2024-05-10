@@ -1,18 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { IRootState } from '../../types/redux.type';
-import {
-  IDynamicFormField,
-  DynamicFormPayload,
-} from '../../types/dynamic-form.type';
-import ApiClient from '../../clients/api.client';
+import type { DynamicFormPayload } from '../../types/dynamic-form';
+import type { DynamicFormField } from '../../interfaces/dynamic-form';
+import type { RootState } from '../../interfaces/redux';
+import ApiClient from '../../clients/api';
 
 const apiClient = new ApiClient();
 
 export const fetchFields = createAsyncThunk<
-  IDynamicFormField[],
+  DynamicFormField[],
   void,
-  { state: IRootState }
+  { state: RootState }
 >('dynamicForm/fetchFields', async (__: void) => {
   const fields = await apiClient.fetchFields();
 
@@ -22,7 +20,7 @@ export const fetchFields = createAsyncThunk<
 export const submitFields = createAsyncThunk<
   string,
   DynamicFormPayload,
-  { state: IRootState }
+  { state: RootState }
 >('dynamicForm/submitFields', async (payload) => {
   return await apiClient.submitFields(payload);
 });
