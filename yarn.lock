@@ -1812,9 +1812,9 @@
   integrity sha512-BUaUnl3pbd00YR2Da241CYtPw6ldNahyCKZMXXs5F1JZTFKWotNq3qQJC6Yq2YQlK3EflfBqzHj6XwwecocHMg==
 
 "@mui/icons-material@^5.15.9":
-  version "5.16.2"
-  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.16.2.tgz#4b08f199f5766de0e3996c52d3a0df3a16635aeb"
-  integrity sha512-5Pbxpm+o0Is1MwB4Ds/kHDOuo596NSq3vFEaWzmC+0kGCjoHt9ECiiBWMGr48yJUSbW8iTAgt/ugeJH3ZPRtDg==
+  version "5.16.3"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.16.3.tgz#aeb6467247b1abe33410c8bcd3575ce1495370ac"
+  integrity sha512-xUQqUtNP8AbVlBigKWm+iZ7HqGYpztC4eo0sJxu6nsOLS4X+deGyR+7ZJfS4x0TuXnifeUSQqndE/2HqqYER1Q==
   dependencies:
     "@babel/runtime" "^7.23.9"
 
