@@ -21,7 +21,7 @@
     "@nestjs/platform-express": "^10.0.2",
     "@nestjs/platform-fastify": "^10.3.2",
     "@nestjs/sequelize": "^10.0.0",
-    "@nestjs/swagger": "^8.0.0",
+    "@nestjs/swagger": "^11.0.0",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
