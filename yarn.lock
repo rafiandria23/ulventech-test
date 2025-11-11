@@ -6804,9 +6804,9 @@ __metadata:
   linkType: hard
 
 "@types/validator@npm:^13.11.8, @types/validator@npm:^13.11.9, @types/validator@npm:^13.7.17":
-  version: 13.15.4
-  resolution: "@types/validator@npm:13.15.4"
-  checksum: 10c0/fca230ddae859f5a66d74b466608ed16c0bfd34700558972fcab789d50d4beb7b14a6419ee2d0aab9c288e82d1706029d1c5519225c4b8dacb20f72bc05d7722
+  version: 13.15.6
+  resolution: "@types/validator@npm:13.15.6"
+  checksum: 10c0/a7c1a0041180fa083bf5feb5aa751d415ceaf3635643dd116d0dc0db83d872ff7b5378f178176887474362fe7b93aa831bd7555d3763534cee898b84ff4d499f
   languageName: node
   linkType: hard
 
