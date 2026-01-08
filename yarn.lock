@@ -3939,8 +3939,8 @@ __metadata:
   linkType: hard
 
 "@mui/material-nextjs@npm:^7.0.0":
-  version: 7.3.6
-  resolution: "@mui/material-nextjs@npm:7.3.6"
+  version: 7.3.7
+  resolution: "@mui/material-nextjs@npm:7.3.7"
   dependencies:
     "@babel/runtime": "npm:^7.28.4"
   peerDependencies:
@@ -3957,7 +3957,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/44987fc455e8b0c27a3f7937c925528e80b967a94a8e2e10e5851ab4154d027bceac3b9923dd7f9d0fc38dce74d6d84a4cb91997a70ad1c094bda09eb42abe26
+  checksum: 10c0/bc17205a1a5de7e0af3415351b95db33862928f310dc1d7418a97d4afc70477dfe083710c32166f03cda583d1f466727744f2ddf84d28d230a8a1c369e4b1101
   languageName: node
   linkType: hard
 
